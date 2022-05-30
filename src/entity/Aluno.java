@@ -23,9 +23,6 @@ public class Aluno extends Pessoa implements Serializable {
     @Column(name = "plano de pagamento")
     private float planoPagamento;
     
-    @Column(name = "dias da semana")
-    private String diasSemana;
-    
     @Column(name = "horario")
     private java.sql.Timestamp horario;
     
@@ -38,11 +35,10 @@ public class Aluno extends Pessoa implements Serializable {
     public Aluno() {
     }
 
-    public Aluno(String nome, String cpf, String email, String numero, int idade, int id, float planoPagamento, String diasSemana, Timestamp horario, String hash) {
-        super(nome, cpf, email, numero, idade);
+    public Aluno(String nome, String cpf, String email, String numero, String diasSemana, int idade, int id, float planoPagamento, Timestamp horario, String hash) {
+        super(nome, cpf, email, numero, idade, diasSemana);
         this.id = id;
         this.planoPagamento = planoPagamento;
-        this.diasSemana = diasSemana;
         this.horario = horario;
         this.hash = hash;
     }
@@ -61,14 +57,6 @@ public class Aluno extends Pessoa implements Serializable {
 
     public void setPlanoPagamento(float planoPagamento) {
         this.planoPagamento = planoPagamento;
-    }
-
-    public String getDiasSemana() {
-        return diasSemana;
-    }
-
-    public void setDiasSemana(String diasSemana) {
-        this.diasSemana = diasSemana;
     }
 
     public java.sql.Timestamp getHorario() {

@@ -22,20 +22,16 @@ public class Professor extends Pessoa implements Serializable {
     @Column(name = "salario")
     private float salario;
     
-    @Column(name = "dia da semana")
-    private String diaSemana;
-    
     @ManyToMany
     List<Aluno> lstAlunos;
     
     public Professor() {
     }
 
-    public Professor(String nome, String cpf, String email, String numero, int idade, int id, float salario, String diaSemana) {
-        super(nome, cpf, email, numero, idade);
+    public Professor(String nome, String cpf, String email, String numero, int idade, String diasSemana, int id, float salario) {
+        super(nome, cpf, email, numero, idade, diasSemana);
         this.id = id;
         this.salario = salario;
-        this.diaSemana = diaSemana;
     }
     
     public int getId() {
@@ -52,14 +48,6 @@ public class Professor extends Pessoa implements Serializable {
 
     public void setSalario(float salario) {
         this.salario = salario;
-    }
-
-    public String getDiaSemana() {
-        return diaSemana;
-    }
-
-    public void setDiaSemana(String diaSemana) {
-        this.diaSemana = diaSemana;
     }
 
     @Override

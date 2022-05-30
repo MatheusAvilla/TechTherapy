@@ -5,6 +5,7 @@
 package views;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -223,7 +224,14 @@ public class frmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_chbxSenhaActionPerformed
 
     private void btnAcessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcessarActionPerformed
-        // TODO add your handling code here:
+        if(txtEmail.getText().equals("admin@teste.com") && String.valueOf(txtSenha.getPassword()).equals("1234")) {
+            frmMenu menu = new frmMenu();
+            menu.setVisible(true);
+            this.dispose();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "CREDENCIAIS INVÁLIDAS!");
+        }
     }//GEN-LAST:event_btnAcessarActionPerformed
 
       
