@@ -18,10 +18,7 @@ public class frmLoading extends javax.swing.JFrame {
      * Creates new form frmLoading
      */
     public frmLoading() {
-        initComponents();
-        
-        
-       
+        initComponents();   
     }
 
     /**
@@ -87,9 +84,8 @@ public class frmLoading extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    
     
     /**
      * @param args the command line arguments
@@ -101,33 +97,28 @@ public class frmLoading extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         
-                
-                frmLoading loading = new frmLoading();
-                loading.setVisible(true);
-                
-               try {
-                   for (int i = 0; i <= 100; i++) {
-                       
-                       loading.barraLoading.setForeground(Color.blue);
-                loading.barraLoading.setStringPainted(true);
-                       Thread.sleep(20);
-                       loading.barraLoading.setValue(i);
-                     
-                  }
-                   
-                
-                   frmMenu menu = new frmMenu();
-                   menu.setVisible(true);
-                   loading.dispose();
-                   
-        } catch (Exception e) {  JOptionPane.showMessageDialog(null, e);
-        }
+        frmLoading loading = new frmLoading();
         
-               
-               
-               
-               
-               
+        loading.setVisible(true);
+
+        try {
+            for (int i = 0; i <= 100; i++) {
+
+                loading.barraLoading.setForeground(Color.blue);
+                loading.barraLoading.setStringPainted(true);
+                Thread.sleep(20);
+                loading.barraLoading.setValue(i);
+
+            }
+
+            frmLogin login = new frmLogin();
+            login.setVisible(true);
+            loading.dispose();
+
+        } catch (Exception e) {  
+            JOptionPane.showMessageDialog(null, e);
+        }
+    
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
