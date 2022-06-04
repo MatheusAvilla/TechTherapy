@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package reports;
+package utils;
 
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
@@ -100,26 +100,26 @@ public class GeradorRelatorio {
 
         @Override
         public void handleEvent(Event event) {
-            try {
+//            try {
                 PdfDocumentEvent docEvent = (PdfDocumentEvent) event;
                 PdfDocument pdf = docEvent.getDocument();
                 PdfPage page = docEvent.getPage();
                 Rectangle pageSize = page.getPageSize();
                 Canvas canvas = new Canvas(new PdfCanvas(page), pageSize);
                 canvas.setFontSize(18);
-                URL urlToImage = this.getClass().getResource("/images/logo.jpg");
-                ImageData data = ImageDataFactory.create(urlToImage.getPath());
-                Image img = new Image(data);
-                img.setWidth(90);
-                canvas.add(img);
+//                URL urlToImage = this.getClass().getResource("/images/logo.jpg");
+//                ImageData data = ImageDataFactory.create(urlToImage.getPath());
+//                Image img = new Image(data);
+//                img.setWidth(90);
+//                canvas.add(img);
                 canvas.showTextAligned(titulo,
                         pageSize.getWidth() / 2,
                         pageSize.getTop() - 60, TextAlignment.CENTER);
                 canvas.setUnderline();
                 canvas.close();
-            } catch (MalformedURLException ex) {
-
-            }
+//            } catch (MalformedURLException ex) {
+//
+//            }
 
         }
 
