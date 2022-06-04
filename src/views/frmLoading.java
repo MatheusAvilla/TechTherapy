@@ -36,6 +36,7 @@ public class frmLoading extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Splash Screen");
 
         jPanel1.setBackground(new java.awt.Color(187, 187, 187));
         jPanel1.setMinimumSize(new java.awt.Dimension(700, 500));
