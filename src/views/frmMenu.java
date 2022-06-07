@@ -19,7 +19,7 @@ public class frmMenu extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblEquipamentos = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         lblCadastrar = new javax.swing.JLabel();
@@ -31,13 +31,10 @@ public class frmMenu extends javax.swing.JFrame {
         lblSair = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lblFicha = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jPanel10 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -59,12 +56,18 @@ public class frmMenu extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/equipments32.png"))); // NOI18N
         jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 40, 40));
 
-        jLabel3.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Equipamentos");
-        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 100, 20));
+        lblEquipamentos.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        lblEquipamentos.setForeground(new java.awt.Color(255, 255, 255));
+        lblEquipamentos.setText("Equipamentos");
+        lblEquipamentos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblEquipamentos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblEquipamentosMouseClicked(evt);
+            }
+        });
+        jPanel4.add(lblEquipamentos, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 100, 20));
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 250, 60));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 250, 60));
 
         jPanel5.setBackground(new java.awt.Color(54, 70, 78));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -104,7 +107,7 @@ public class frmMenu extends javax.swing.JFrame {
         });
         jPanel6.add(lblAgenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 60, 20));
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 250, 60));
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 250, 60));
 
         jPanel7.setBackground(new java.awt.Color(54, 70, 78));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -133,12 +136,18 @@ public class frmMenu extends javax.swing.JFrame {
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/treino.png"))); // NOI18N
         jPanel8.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 40, 40));
 
-        jLabel11.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Ficha de Treino");
-        jPanel8.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 100, 20));
+        lblFicha.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
+        lblFicha.setForeground(new java.awt.Color(255, 255, 255));
+        lblFicha.setText("Ficha de Treino");
+        lblFicha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblFicha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblFichaMouseClicked(evt);
+            }
+        });
+        jPanel8.add(lblFicha, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 100, 20));
 
-        jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 250, 60));
+        jPanel2.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 250, 60));
 
         jPanel9.setBackground(new java.awt.Color(54, 70, 78));
         jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -153,20 +162,6 @@ public class frmMenu extends javax.swing.JFrame {
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/menu-icon.png"))); // NOI18N
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, 40));
-
-        jPanel10.setBackground(new java.awt.Color(54, 70, 78));
-        jPanel10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pesquisar-bd.png"))); // NOI18N
-        jPanel10.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 40, 40));
-
-        jLabel9.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Consultar");
-        jPanel10.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 70, 20));
-
-        jPanel2.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 250, 60));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 75, 250, 550));
 
@@ -218,6 +213,16 @@ public class frmMenu extends javax.swing.JFrame {
         cadastro.setVisible(true);
     }//GEN-LAST:event_lblCadastrarMouseClicked
 
+    private void lblFichaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFichaMouseClicked
+        frmFicha ficha = new frmFicha(this, true);
+        ficha.setVisible(true);
+    }//GEN-LAST:event_lblFichaMouseClicked
+
+    private void lblEquipamentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEquipamentosMouseClicked
+        frmEquipamentos eqp = new frmEquipamentos(this, true);
+        eqp.setVisible(true);
+    }//GEN-LAST:event_lblEquipamentosMouseClicked
+
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -254,18 +259,13 @@ public class frmMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -276,6 +276,8 @@ public class frmMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JLabel lblAgenda;
     private javax.swing.JLabel lblCadastrar;
+    private javax.swing.JLabel lblEquipamentos;
+    private javax.swing.JLabel lblFicha;
     private javax.swing.JLabel lblSair;
     // End of variables declaration//GEN-END:variables
 }

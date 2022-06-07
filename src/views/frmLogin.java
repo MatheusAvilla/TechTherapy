@@ -46,7 +46,6 @@ public class frmLogin extends javax.swing.JFrame {
         chbxSenha = new javax.swing.JCheckBox();
         lblEsqSenha = new javax.swing.JLabel();
         btnAcessar = new javax.swing.JButton();
-        btnCadastrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -101,6 +100,7 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
 
+        chbxSenha.setBackground(new java.awt.Color(202, 232, 252));
         chbxSenha.setText("Mostrar senha");
         chbxSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,6 +126,7 @@ public class frmLogin extends javax.swing.JFrame {
         btnAcessar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sign-in-logo.png"))); // NOI18N
         btnAcessar.setText("Acessar");
         btnAcessar.setAlignmentX(0.5F);
+        btnAcessar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAcessar.setMaximumSize(new java.awt.Dimension(148, 50));
         btnAcessar.setMinimumSize(new java.awt.Dimension(148, 50));
         btnAcessar.addActionListener(new java.awt.event.ActionListener() {
@@ -133,15 +134,6 @@ public class frmLogin extends javax.swing.JFrame {
                 btnAcessarActionPerformed(evt);
             }
         });
-
-        btnCadastrar.setBackground(new java.awt.Color(73, 255, 151));
-        btnCadastrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnCadastrar.setForeground(new java.awt.Color(0, 120, 70));
-        btnCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sign-up-logo.png"))); // NOI18N
-        btnCadastrar.setText("Cadastrar");
-        btnCadastrar.setAlignmentX(0.5F);
-        btnCadastrar.setMaximumSize(new java.awt.Dimension(148, 50));
-        btnCadastrar.setMinimumSize(new java.awt.Dimension(148, 50));
 
         jPanel2.setBackground(new java.awt.Color(202, 232, 252));
 
@@ -162,37 +154,40 @@ public class frmLogin extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
+        rbtAdm.setBackground(new java.awt.Color(202, 232, 252));
         buttonGroup1.add(rbtAdm);
         rbtAdm.setText("Administrador");
+        rbtAdm.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        rbtProf.setBackground(new java.awt.Color(202, 232, 252));
         buttonGroup1.add(rbtProf);
         rbtProf.setText("Professor");
+        rbtProf.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(67, Short.MAX_VALUE)
+                .addContainerGap(61, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chbxSenha)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(rbtAdm)
-                            .addGap(18, 18, 18)
-                            .addComponent(rbtProf))
-                        .addComponent(txtSenha, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblStart, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnAcessar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(59, 59, 59))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(lblEsqSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(51, 51, 51))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(chbxSenha)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(rbtAdm)
+                                .addGap(18, 18, 18)
+                                .addComponent(rbtProf))
+                            .addComponent(txtSenha, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblStart, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnAcessar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(68, 68, 68))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblEsqSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -209,7 +204,7 @@ public class frmLogin extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(34, 34, 34)
                 .addComponent(lblStart)
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -221,12 +216,10 @@ public class frmLogin extends javax.swing.JFrame {
                 .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(chbxSenha)
-                .addGap(18, 18, 18)
+                .addGap(48, 48, 48)
                 .addComponent(lblEsqSenha)
-                .addGap(32, 32, 32)
+                .addGap(40, 40, 40)
                 .addComponent(btnAcessar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -396,7 +389,6 @@ public class frmLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAcessar;
-    private javax.swing.JButton btnCadastrar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox chbxSenha;
     private javax.swing.JLabel jLabel1;

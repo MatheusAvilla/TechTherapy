@@ -12,15 +12,16 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
-import utils.GeradorRelatorio;
 import utils.TableModelCreator;
+
 
 /**
  *
  * @author Matheus
  */
 public class frmCad extends javax.swing.JDialog {
-    
+
+    private Professor objProfessor;  
     private int idSelecionado;
 
     /**
@@ -47,7 +48,7 @@ public class frmCad extends javax.swing.JDialog {
         txtEmail = new javax.swing.JTextField();
         btnInserir = new javax.swing.JButton();
         btnDeletar = new javax.swing.JButton();
-        btnLimpar = new javax.swing.JButton();
+        btnConsultar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         rbtAluno = new javax.swing.JRadioButton();
         rbtProfessor = new javax.swing.JRadioButton();
@@ -63,6 +64,8 @@ public class frmCad extends javax.swing.JDialog {
         txtSalario = new javax.swing.JTextField();
         txtCpf = new javax.swing.JFormattedTextField();
         txtTelefone = new javax.swing.JFormattedTextField();
+        btnLimpar = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastros");
@@ -82,7 +85,6 @@ public class frmCad extends javax.swing.JDialog {
         jLabelCadastro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelCadastro.setText("Cadastro TechTherapy");
 
-        txtNome.setForeground(new java.awt.Color(0, 0, 0));
         txtNome.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtNome.setMaximumSize(new java.awt.Dimension(270, 50));
         txtNome.setMinimumSize(new java.awt.Dimension(270, 50));
@@ -92,7 +94,6 @@ public class frmCad extends javax.swing.JDialog {
             }
         });
 
-        txtEmail.setForeground(new java.awt.Color(0, 0, 0));
         txtEmail.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtEmail.setMaximumSize(new java.awt.Dimension(270, 50));
         txtEmail.setMinimumSize(new java.awt.Dimension(270, 50));
@@ -111,7 +112,9 @@ public class frmCad extends javax.swing.JDialog {
         });
 
         btnInserir.setBackground(new java.awt.Color(123, 225, 153));
+        btnInserir.setFont(new java.awt.Font("Segoe UI Historic", 1, 12)); // NOI18N
         btnInserir.setText("Inserir");
+        btnInserir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnInserir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInserirActionPerformed(evt);
@@ -119,23 +122,28 @@ public class frmCad extends javax.swing.JDialog {
         });
 
         btnDeletar.setBackground(new java.awt.Color(241, 113, 113));
+        btnDeletar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnDeletar.setText("Deletar");
+        btnDeletar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDeletar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeletarActionPerformed(evt);
             }
         });
 
-        btnLimpar.setBackground(new java.awt.Color(219, 216, 125));
-        btnLimpar.setText("Limpar");
-        btnLimpar.addActionListener(new java.awt.event.ActionListener() {
+        btnConsultar.setBackground(new java.awt.Color(202, 217, 226));
+        btnConsultar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnConsultar.setText("Consultar");
+        btnConsultar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimparActionPerformed(evt);
+                btnConsultarActionPerformed(evt);
             }
         });
 
         jLabel2.setText("Dias da Semana");
 
+        rbtAluno.setBackground(new java.awt.Color(153, 255, 255));
         buttonGroup1.add(rbtAluno);
         rbtAluno.setText("Aluno");
         rbtAluno.addActionListener(new java.awt.event.ActionListener() {
@@ -144,6 +152,7 @@ public class frmCad extends javax.swing.JDialog {
             }
         });
 
+        rbtProfessor.setBackground(new java.awt.Color(153, 255, 255));
         buttonGroup1.add(rbtProfessor);
         rbtProfessor.setText("Professor");
         rbtProfessor.addActionListener(new java.awt.event.ActionListener() {
@@ -168,6 +177,7 @@ public class frmCad extends javax.swing.JDialog {
 
             }
         ));
+        tblCad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tblCad.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblCadMouseClicked(evt);
@@ -176,7 +186,9 @@ public class frmCad extends javax.swing.JDialog {
         jScrollPane1.setViewportView(tblCad);
 
         btnInserir1.setBackground(new java.awt.Color(126, 172, 225));
+        btnInserir1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnInserir1.setText("Imprimir");
+        btnInserir1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnInserir1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInserir1ActionPerformed(evt);
@@ -187,7 +199,6 @@ public class frmCad extends javax.swing.JDialog {
 
         lblSalario.setText("Salário");
 
-        txtSalario.setForeground(new java.awt.Color(0, 0, 0));
         txtSalario.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtSalario.setMaximumSize(new java.awt.Dimension(270, 50));
         txtSalario.setMinimumSize(new java.awt.Dimension(270, 50));
@@ -217,19 +228,41 @@ public class frmCad extends javax.swing.JDialog {
             ex.printStackTrace();
         }
 
+        btnLimpar.setBackground(new java.awt.Color(219, 216, 125));
+        btnLimpar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnLimpar.setText("Limpar");
+        btnLimpar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparActionPerformed(evt);
+            }
+        });
+
+        btnEditar.setBackground(new java.awt.Color(182, 177, 159));
+        btnEditar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnEditar.setText("Editar");
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabelCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(rbtProfessor)
-                                .addGap(43, 43, 43)
+                                .addGap(40, 40, 40)
                                 .addComponent(rbtAluno))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(txtNome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -243,31 +276,33 @@ public class frmCad extends javax.swing.JDialog {
                                             .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel3)
-                                                .addGap(186, 186, 186))
-                                            .addComponent(txtTelefone)))
+                                            .addComponent(jLabel3)
+                                            .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel2)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addComponent(cmbDias, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGap(42, 42, 42)))
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lblSalario)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                        .addComponent(btnDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(40, 40, 40)
-                                        .addComponent(btnInserir, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(38, 38, 38)
-                                        .addComponent(btnInserir1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel2)
+                                            .addComponent(cmbDias, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblSalario)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(38, 38, 38)
+                                                    .addComponent(btnDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(btnInserir1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(39, 39, 39)
+                                            .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(btnInserir, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(39, 39, 39)
+                                            .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -275,14 +310,13 @@ public class frmCad extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rbtAluno)
-                            .addComponent(rbtProfessor))
-                        .addGap(72, 72, 72)
+                            .addComponent(rbtProfessor)
+                            .addComponent(rbtAluno))
+                        .addGap(37, 37, 37)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -306,12 +340,19 @@ public class frmCad extends javax.swing.JDialog {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cmbDias, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnInserir, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnDeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnInserir1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnInserir1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(28, 28, 28))
         );
 
@@ -319,7 +360,7 @@ public class frmCad extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1133, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1202, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -357,8 +398,7 @@ public class frmCad extends javax.swing.JDialog {
     }//GEN-LAST:event_btnInserirActionPerformed
 
     private void btnInserir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserir1ActionPerformed
-        GeradorRelatorio gerador = new GeradorRelatorio();
-        gerador.Gerar(this, "Ficha de Cadastro", "TechTherapy", tblCad);
+    
     }//GEN-LAST:event_btnInserir1ActionPerformed
 
     private void atualizarTabela() {
@@ -424,6 +464,18 @@ public class frmCad extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnDeletarActionPerformed
 
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+         this.objProfessor = new ProfessorDAO().selecionarPorCodigo(idSelecionado);
+    
+        if (objProfessor != null) {
+            txtNome.setText(objProfessor.getNome());
+            txtEmail.setText(objProfessor.getEmail());
+            txtCpf.setText(objProfessor.getCpf());
+            txtTelefone.setText(objProfessor.getTelefone());
+            txtSalario.setText(String.valueOf(objProfessor.getSalario()));
+        }
+    }//GEN-LAST:event_btnConsultarActionPerformed
+
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
         txtNome.setText("");
         txtEmail.setText("");
@@ -433,6 +485,27 @@ public class frmCad extends javax.swing.JDialog {
         txtSalario.setText("");
     }//GEN-LAST:event_btnLimparActionPerformed
 
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+            
+        if (this.objProfessor == null) {
+            this.objProfessor = new Professor();
+                    
+            
+        }
+        
+        this.objProfessor.setNome(txtNome.getText());
+         this.objProfessor.setCpf(txtCpf.getText());
+          this.objProfessor.setEmail(txtEmail.getText());
+           this.objProfessor.setTelefone(txtTelefone.getText());
+            this.objProfessor.setSalario(Float.parseFloat(txtSalario.getText()));
+             this.objProfessor.setDiaSemana(cmbDias.getSelectedItem().toString());
+             
+             new ProfessorDAO().editar(this.objProfessor);
+             atualizarTabela();
+    }//GEN-LAST:event_btnEditarActionPerformed
+    
+    
+            
     /**
      * @param args the command line arguments
      */
@@ -476,7 +549,9 @@ public class frmCad extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnDeletar;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnInserir;
     private javax.swing.JButton btnInserir1;
     private javax.swing.JButton btnLimpar;
